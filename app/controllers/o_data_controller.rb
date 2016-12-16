@@ -15,7 +15,7 @@ class ODataController < ApplicationController
   rescue_from OData::ODataException, :with => :handle_exception
   rescue_from ActiveRecord::RecordNotFound, :with => :handle_exception
 
-  skip_before_action :verify_authenticity_token, only: :options
+  skip_before_action :verify_authenticity_token, only: :options, raise:false
 
   before_action :extract_resource_path_and_query_string, :only => [:resource]
   before_action :parse_resource_path_and_query_string!,  :only => [:resource]
